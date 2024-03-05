@@ -1,1 +1,1 @@
-# odd_duck_products
+# Assets for Odd Duck Products Lab
