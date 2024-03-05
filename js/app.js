@@ -1,20 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get all anchor elements
-    const links = document.querySelectorAll("a");
-
-    // Attach click event listener to each anchor element
-    links.forEach(function(link) {
-        link.addEventListener("click", function(event) {
-            // Prevent the default behavior of opening the link in a new tab
-            event.preventDefault();
-            
-            // Get the href attribute of the clicked link
-            const url = link.getAttribute("href");
-            
-            // Manually navigate to the URL in the same tab
-            window.location.href = url;
-        });
-    });
+   
 
     // Get the image elements
     const firstImage = document.getElementById("first-image");
