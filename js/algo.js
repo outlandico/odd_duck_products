@@ -1,5 +1,3 @@
-// JavaScript (script.js)
-
 // Define global variables for votes and views
 let votes = 0;
 let views = 0;
@@ -10,6 +8,15 @@ let votedProduct = '';
 // Define an object to store the total clicks for each product
 let productClicks = {};
 
+// Define an object to store the total votes for each product
+let productVotes = {};
+
+// Define an array to store the names of the products
+const productNames = [];
+
+// Define the Chart.js bar chart instance
+let barChart;
+
 // Function to increment votes
 function upvote(productName) {
     if (votes < 25) {
@@ -17,6 +24,14 @@ function upvote(productName) {
         console.log("Vote recorded for " + productName);
         // Update the votedProduct variable
         votedProduct = productName;
+        // Increment the total votes for the product
+        if (productName in productVotes) {
+            productVotes[productName]++;
+        } else {
+            productVotes[productName] = 1;
+        }
+        updateBarChart(); // Update the bar chart
+        generateAndDisplayNewProducts(); // Generate and display new products after vote
     } else {
         console.log("You have reached the vote limit.");
     }
@@ -27,9 +42,18 @@ function incrementViews() {
     if (views < 10) {
         views++;
         console.log("View recorded");
+        updateBarChart(); // Update the bar chart
+        generateAndDisplayNewProducts(); // Generate and display new products after view
     } else {
         console.log("You have reached the view limit.");
     }
+}
+
+// Function to update the bar chart
+function updateBarChart() {
+    barChart.data.datasets[0].data = Object.values(productVotes);
+    barChart.data.datasets[1].data = Object.values(productClicks);
+    barChart.update();
 }
 
 // Function to display the statistics
@@ -50,12 +74,20 @@ function displayStats() {
     }
 }
 
+// Function to generate and display new products
+function generateAndDisplayNewProducts() {
+    const newProducts = generateThreeUniqueProducts();
+    displayProducts(newProducts);
+    displayStats();
+}
+
 // Define a constructor function for Product objects
 function Product(name, imagePath) {
     this.name = name;
     this.imagePath = imagePath;
     this.timesShown = 0;
     this.timesClicked = 0;
+    productNames.push(name); // Add product name to the array
 }
 
 // Define an array to hold all products
@@ -85,13 +117,13 @@ products.push(new Product('Wine-glass', './images/wine-glass.jpg'));
 // Function to generate three unique product images
 function generateThreeUniqueProducts() {
     const uniqueProducts = [];
-    while (uniqueProducts.length < 3) {
-        const randomIndex = Math.floor(Math.random() * products.length);
-        const product = products[randomIndex];
-        if (!uniqueProducts.includes(product)) {
-            uniqueProducts.push(product);
-            product.timesShown++; // Increment times shown
-        }
+    const tempProducts = [...products]; // Create a temporary copy of the products array
+    while (uniqueProducts.length < 3 && tempProducts.length > 0) {
+        const randomIndex = Math.floor(Math.random() * tempProducts.length);
+        const product = tempProducts[randomIndex];
+        uniqueProducts.push(product);
+        product.timesShown++; // Increment times shown
+        tempProducts.splice(randomIndex, 1); // Remove the selected product from temporary array
     }
     return uniqueProducts;
 }
@@ -115,13 +147,14 @@ function displayProducts(products) {
             } else {
                 productClicks[product.name] = 1;
             }
-            const newProducts = generateThreeUniqueProducts();
-            displayProducts(newProducts);
             displayStats(); // Update stats
         });
         container.appendChild(img);
     });
 }
+
+// Array to store the previous set of products
+let previousProducts = [];
 
 // Add event listener to the container for product images after DOM content is loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -129,6 +162,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialProducts = generateThreeUniqueProducts();
     displayProducts(initialProducts);
     displayStats(); // Display initial stats
+
+    // Create the bar chart using Chart.js
+    const ctx = document.getElementById('bar-chart').getContext('2d');
+    barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: productNames,
+            datasets: [
+                {
+                    label: 'Votes',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: Object.values(productVotes)
+                },
+                {
+                    label: 'Views',
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: Object.values(productClicks)
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 });
 
 
