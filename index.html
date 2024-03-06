@@ -20,19 +20,23 @@
         <img id="third-image" src="" alt="Third Image">
     </div>
 
-    <div class="left-column">
-        <ul class="totals">
-            <li class="views-total">Views: 0</li>
-            <li class="votes-total">Votes: 0</li>
-        </ul>
+    <div class="bar-chart-container">
+        <canvas id="bar-chart"></canvas> <!-- Canvas for the bar chart -->
     </div>
 
-    <footer></footer>
+    <div class="stats">
+        <p class="votes-total"></p>
+        <p class="views-total"></p>
+        <ul class="clicks-list"></ul>
+        <ul class="votes-list"></ul>
+    </div>
 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!-- Include the JavaScript file -->
     <script src="./js/algo.js"></script>
+    <footer></footer>
 
 </body>
 
 </html>
-
