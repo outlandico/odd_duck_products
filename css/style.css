@@ -65,9 +65,25 @@ body {
     margin: 10px; /* Adjust spacing between images */
 }
 
+
+
+
+.bar-chart-container {
+    background-color: #8c9291; /* Darker background color */
+    max-width: 600px; /* Maximum width of 600px */
+    margin: 0 auto; /* Center the bar chart */
+    padding: 20px;
+}
+
+.stats {
+    background-color: #e2c7c7; /* Darker background color */
+    padding: 20px;
+}
+
+
 /* Footer styles */
 footer {
-    background-color: rgba(196, 196, 196, 0.3);
+    background-color: rgba(251, 245, 245, 0.3);
     color: white;
     padding: 10px;
     width: 100%;
@@ -76,3 +92,5 @@ footer {
     bottom: 0; /* Position at the bottom */
     left: 0; /* Position at the left */
 }
+
+
