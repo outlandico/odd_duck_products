@@ -4,4 +4,4 @@
 
 [Deployed Site:https:](//outlandico.github.io/odd_duck_products)
 
-[Lighthouse]](<Screenshot (2740).png>)
+[Lighthouse](<Screenshot (3220).png>)
