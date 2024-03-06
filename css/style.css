@@ -1,159 +1,78 @@
-body, h1, .logo, .header, .arrow-buttons, .left-arrow, .right-arrow, .refresh-button, .search-bar, .footer, .parent, .container, .left-column, .images, #first-image, #second-image, #third-image, .paragraph, .footer {
-    background-color: #c4c4c4;
+body {
+    background-color: rgba(196, 196, 196, 0.9);
 }
 
-h1 {
-    text-align: center;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    margin-top: 0px;
-    font-size: 20px;
-    color: #333;
-}
-
-.logo {
-    background-color: #c9c9c9;
-    display: flex;
-    flex-direction: row;
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
-    margin-left: 10px;
-}
-
+/* Header styles */
 .header {
-    display: inline-block;
-    flex-direction: row;
-    background-color: #c4c4c4;
+    background-color: rgba(161, 160, 160, 0.3);
     color: white;
-    padding: 0;
+    padding: 10px;
     width: 100%;
-    height: 150px;
-    top: 0;
-    margin: 20px auto;
+    height: 100px;
+    position: fixed;
+    top: 0; /* Position at the top */
+    left: 0; /* Position at the left */
+    z-index: 999; /* Ensure header is on top of other elements */
 }
 
-.h1-container {
-    margin: 0 auto;
-    padding-top: em;
-}
-
-.arrow-buttons {
-    display: flex;
-    flex-direction: row;
-    padding-right: 0px;
-    margin-left: 0;
-}
-
-.left-arrow, .right-arrow, .refresh-button {
-    font-size: 10px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.search-bar {
-    display: flex;
-    flex-direction: row;
-    width: 100%; /* Changed width to 100% */
-    max-width: 820px; /* Added max-width */
-    height: 30px;
-    margin: 30px auto; /* Center horizontally */
-    padding: 0px;
-    row-gap: 30px;
-    border: 1px solid #333;
-    box-sizing: border-box;
-    font-size: 16px;
-    align-content: end;
-    overflow: hidden; /* Prevent horizontal scrolling */
-}
-
-.footer {
-    color: white;
-    padding: 20px;
-    width: 100%;
-    margin: 20px auto;
-}
-
-.parent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
+/* Container styles */
 .container {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Changed from 'row' to 'center' */
-    margin-top: 0;
-    max-width: 960px;
-    overflow: hidden; /* Prevent horizontal scrolling */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 120px; /* Ensure content is below the header */
 }
 
+/* Left column styles */
 .left-column {
-    display: flex;
-    flex-direction: row;
-    background-color: #ccc;
+    background-color: rgba(196, 196, 196, 0.3);
     width: 200px;
-    height: 400px;
-    margin-left: 0;
-    margin-right: 0px;
+    height: 800px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 120px; /* Ensure it starts below the header */
+    left: 0; /* Position at the left */
 }
 
-ul li {
-    list-style-type: none;
+/* Total list styles */
+.totals {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-ul li a {
-    text-decoration: none;
-    color: inherit;
-    opacity: 1;
-    transition: opacity 0.3s ease;
+/* Individual total item styles */
+.totals li {
+    margin-bottom: 5px;
+    color: white;
+    font-weight: bold;
 }
 
-ul li a:hover {
-    opacity: 0.7;
-}
-
-.content {
+/* Images container styles */
+.images-container {
     display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 200px auto;
+    max-width: 959px;
 }
 
-
-
-#first-image, #second-image, #third-image { /* Changed from class selectors to ID selectors */
-    display: inline-block;
-    margin: 0 auto;
-    background-color: #ccc;
-    padding: 30px;
-    width: 400px;
-    height: 400px;
-}
-
-#first-image {
-    width: 290px;
+.images-container img {
+    width: 150px;
     height: auto;
+    margin: 10px; /* Adjust spacing between images */
 }
 
-#second-image {
-    width: 290px;
-    height: auto;
-}
-
-#third-image {
-    width: 290px;
-    height: auto;
-}
-
-.paragraph {
-    display: flex;
-    flex-direction: row;
-    margin: 20px auto;
-    background-color: #ccc;
-    /* flex-grow: 1; */ /* Remove this line */
-    width: 960px;
-    height: 200px;
+/* Footer styles */
+footer {
+    background-color: rgba(196, 196, 196, 0.3);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Position at the left */
 }
